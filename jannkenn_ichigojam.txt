@@ -1,0 +1,8 @@
+5 LET[1],"GU","CHOKI","PA"
+10 INPUT "JANKEN (1:GU 2:CHOKI 3:PA) ",A
+20 B=RND(3)+1
+30 ?"YOU:";STR$([A]);" - ME:";STR$([B])
+40 IF A=B ?"AIKO":GOTO 10
+50 C=A-B
+60 IF C=-1 OR C=2 ?"WON!"
+70 IF C=-2 OR C=1 ?"LOST"
