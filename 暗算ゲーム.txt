@@ -1,0 +1,45 @@
+*暗算ゲーム
+
+1 'ANZAN
+10 CLS
+20 INPUT "EASY:1 HARD:2",L
+30 IF L==1 N=15
+40 IF L==2 N=40
+50 CLS
+60 A=RND(N):B=RND(N):C=A+B
+70 LC 9,10:?A;"+";B;"=?";
+80 INPUT " ",D
+90 LC 12,12
+100 IF C==D ?"GOOD!" ELSE ?"NO.."
+110 WAIT 30:GOTO 50
+
+改造案
+・制限時間をつける
+・問題数をつける
+・正解の時、誤答の時に音をつける
+・足し算の数を増やす
+・かけ算、引き算、割り算にする
+・四則演算を選べるようにする
+・正解でご飯食べれる、お腹いっぱいになったらクリアのアニメをつける
+
+EX
+1 'ANZAN
+10 CLS:M=0
+20 INPUT "EASY:1 HARD:2",L
+30 IF L==1 N=15
+40 IF L==2 N=40
+45 FOR I=1 TO 10
+50 CLS
+60 A=RND(N):B=RND(N):C=A+B
+65 LC 9,8:?I
+70 LC 9,10:?A;"+";B;"=?";
+80 INPUT " ",D
+90 LC 12,12
+100 IF C==D ?"GOOD!" ELSE ?"NO..":M=M+1
+110 WAIT 30:NEXT
+120 LC 9,12:?"MISS ";M;"/";I
+130 LC 9,13
+140 IF M==0 ?"VERY GOOD!":END
+150 IF M<4 ?"GOOD!":END
+160 IF M<8 ?"NO..":END
+170 IF M<=10 ?"BAD...":END
