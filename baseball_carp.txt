@@ -1,4 +1,6 @@
 [野球ゲーム　広島ver]
+//at WebAssembly
+//IchigoJamで動かすときは、WAITの引数を変更する
 	
 10 VIDEO 3:CLS:Y=2
 20 GSB 400
