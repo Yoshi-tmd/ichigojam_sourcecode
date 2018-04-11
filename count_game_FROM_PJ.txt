@@ -1,0 +1,38 @@
+# カウントゲーム　from PROGJAM
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+10 CLS:A=0
+20 GSB 100
+30 IF RND(5)<>0 GOTO 20
+40 IF INKEY()==0 GOTO 40
+50 ?A:END
+100 A=A+1:?"!";
+110 RTN
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+[改造ポイント]
+■level.1
+	・行番号100の！の文字を変える
+	・行番号30RND(5）の数字を変える
+
+■level.2
+	・画面が消えるようにする
+		35 WAIT 30:CLS
+	・答えを入力する
+		40 INPUT “NANNKO?”,B
+		50 IF A==B ?”GOOD!” ELSE ?”NO…”
+		60 ?A:END
+■level.3
+	・たまに違う文字が出る
+		10 CLS:A=0:C=0
+		20 IF RND(4)<>0 GSB 100 ELSE GSB 200
+		30 IF RND(5)<>0 GOTO 20
+		35 WAIT 30:CLS
+		40 INPUT "! ハ　ナンコ?”,B
+		50 IF A==B ?"GOOD!" ELSE ?"NO.."
+		60 ?A:END
+		100 A=A+1:?"!";
+		110 RTN
+		200 C=C+1:?"1";
+		210 RTN
+
