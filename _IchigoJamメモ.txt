@@ -1,0 +1,20 @@
+IchigoJamメモ
+
+★CutleryApps
+
+【接続方法】
+※変換端子が必要
+タブレットーーーIchigoJam T
+　GNDーーーーーーーGND
+　RXDーーーーーーーTXD
+　TXDーーーーーーーRXD
+
+・上の通りに接続する
+・タブレットで「CutleryApps」を起動
+・IchigoJamの電源をON
+・カードをセット
+・「やってみる」で実行
+
+【焼き機端子を使う場合の注意】
+必ずmicroUSBケーブルははずす
+電源ももらうので。
