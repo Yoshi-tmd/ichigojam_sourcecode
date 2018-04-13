@@ -27,12 +27,12 @@ def main():
     # initial sacchan status
     scpos_x = WIDTH / 2
     scpos_y = HEIGHT * 0.9
-    sc_velovity = 99
+    sc_velovity = 9999
     sc_accel = 1
 
     score = 0
 
-    font = pygame.font.SysFont(None,20)
+    font = pygame.font.SysFont(None,40)
 
     running = True
     # while loop
@@ -41,20 +41,30 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == KEYDWON:
-                if event.type == K_SPACE:
-                    sc_velovity = -100
+            if event.type == KEYDOWN:
+                if event.key == K_SPACE:
+                    sc_velovity = -16
+
+        rope_rect = Rect(rppos_x, rppos_y, 20, 10)
+        sacchan_rect = Rect(scpos_x, scpos_y - 20, 30, 40)
+
+        # check to see if a rope hit the sacchan
+        if sacchan_rect.bottom >= rope_rect.top and rope_rect.right >= sacchan_rect.left:
+            running = False
+        elif sacchan_rect.bottom >= rope_rect.top and rope_rect.left <= sacchan_rect.right:
+            running = False
 
         surface.fill((0, 0, 0))
 
         # move sacchan
-        if sc_velovity != 99:
+        if sc_velovity != 9999:
             scpos_y += sc_velovity
             sc_velovity += sc_accel
 
         # get score
         if scpos_y > HEIGHT * 0.9:
-            sc_velovity = 99
+            scpos_y = HEIGHT * 0.9
+            sc_velovity = 9999
             score += 1
 
         # move rope
@@ -65,12 +75,12 @@ def main():
             rope_velocity += rope_accel
 
         # draw object
-        pygame.draw.rect(surface, (255, 255, 255), Rect(rppos_x, rppos_y, 20, 10))
-        pygame.draw.rect(surface, (255, 255, 0), Rect(scpos_x, scpos_y, 30, 40))
+        pygame.draw.rect(surface, (255, 255, 255), rope_rect)
+        pygame.draw.rect(surface, (255, 255, 0), sacchan_rect)
 
         # draw score
-        # rend_score = font.render(str(score), True, (255, 255, 255))
-        # surface.blit(rend_score, (WIDTH * 0.9, HEIGHT * 0.1))
+        rend_score = font.render(str(score), True, (255, 255, 255))
+        surface.blit(rend_score, (WIDTH * 0.9, HEIGHT * 0.1))
 
         pygame.display.update()
         fpslock.tick(60)
