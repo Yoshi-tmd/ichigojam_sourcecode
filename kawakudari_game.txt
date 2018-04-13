@@ -1,0 +1,23 @@
+[かわくだりゲーム]
+//ノーマル
+10 CLS::CLT:X=15
+20 LC X,5:?"0"
+30 LC RND(32),23:?"*"
+35 WAIT 2
+36 X=X-BTN(28)+BTN(29)
+38 IF SCR(X,5) ?TICK():END
+40 GOTO 20
+
+
+//二人対戦
+*38と39のWINをとれば協力プレイ
+10 CLS:X=10:Y=20:CLT
+20 LC X,5:?"0"
+25 LC Y,5:?"T"
+30 LC RND(32),23:?"*"
+35 WAIT 2:K=INKEY()
+36 X=X-(K==28)+(K==29)
+37 Y=Y-(K==90)+(K==67)
+38 IF SCR(X,5) ?TICK();"  T WIN!":END
+39 IF SCR(Y,5) ?TICK();"  0 WIN!":END
+40 GOTO 20
