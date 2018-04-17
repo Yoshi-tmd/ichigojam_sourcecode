@@ -12,3 +12,42 @@
 230 RTN
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+[改造ポイント]
+■level.1
+	・行番号200の?CHR$(A+240)の数字を変える
+	・行番号40のWAITの数字を変える
+■level.2
+	・スロットゲームに改造
+ーーーーーーーーーーー
+10 CLS:CLV
+20 A=(A+1)%10
+30 LC 0,0:?A
+40 WAIT 5
+50 IF INKEY()<>0 GSB 200
+60 IF X<3 GOTO 20
+70 GSB 300
+100 END
+200 LC X,9:?A
+210 LC X,10:?CHR$(A+240)
+220 X=X+1
+230 RTN
+300 L=SCR(0,10)
+310 M=SCR(1,10)
+320 N=SCR(2,10)
+325 LC 0,12
+330 IF L==M AND M==N ?"PERFECT!!":RTN
+340 IF L==M OR L==N ?"GOOD!":RTN ELSE IF M==N ?"GOOD!":RTN
+350 IF L<>M AND L<>N ?"NO..":RTN ELSE IF M<>N ?"NO..":RTN
+ーーーーーーーーーーー
+	・GSBで音をつける関数を作る
+ーーーーーーーーーーー
+80 GSB 400
+400 C=SCR(0,12)
+410 IF C==ASC("P") PLAY"T480 CDEFGAB O4CDEFGAB O5C"
+420 IF C==ASC("G") PLAY"T400 CDEFGAB O4C"
+430 IF C==ASC("N") PLAY"T320 O3C O2BAGFEDC"
+440 RTN
+ーーーーーーーーーーー
+
+	
