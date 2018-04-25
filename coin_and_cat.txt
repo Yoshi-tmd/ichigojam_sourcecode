@@ -1,0 +1,62 @@
+ネコ追いかけられてもコイン取るぞゲーム
+from DJ
+
+[SAVE0]
+5 CLV:CLS
+10 LC 0,0:?""
+20 LC 0,22:?""
+30 I=1
+40 LC 0,I:?"";
+50 I=I+1
+60 IF I<22 GOTO 40
+70 I=1
+80 LC 30,I:?"";
+90 I=I+1
+100 IF I<22 GOTO 80
+110 J=2:K=2
+120 IF RND(3)==0 GOTO 150 ELSE LC J,K:?"";
+130 IF K==2 R=RND(4) ELSE R=RND(3)
+131 N=RND(4)
+140 IF R==0 X=J-1:Y=K
+141 IF R==1 X=J+1:Y=K
+142 IF R==2 X=J:Y=K+1
+143 IF R==3 X=J:Y=K-1
+145 IF SCR(X,Y)==0 LC X,Y:IF N==0 ?"õ";:C=C+1 ELSE ?"";
+150 J=J+2
+160 IF J<30 GOTO 120
+170 K=K+2:J=2
+180 IF K<21 GOTO 120
+190 LRUN1
+
+
+[SAVE1]
+10 CLT
+20 X=1:Y=1:P=15:Q=10:T=0:U=0
+30 LC X,Y:?"ú"
+31 A=X:B=Y
+40 LC 0,23:?"TIME:";TICK()/60;
+50 LC 15,23:?"COIN:";C;"  ";
+90 IF U==1 LC E,F:?CHR$(T)
+100 IF SCR(P,Q)<>236 T=SCR(P,Q)
+110 LC P,Q:?"ì";
+120 E=P:F=Q
+130 R=RND(2)
+140 IF (R==0)*(X<P) P=P-1
+150 IF (R==0)*(X>P) P=P+1
+160 IF (R==1)*(Y<Q) Q=Q-1
+170 IF (R==1)*(Y>Q) Q=Q+1
+180 IF ((T==0)+(T==32)+(T==245))*((P<>E)+(Q<>F))*(SCR(P,Q)==143) P=E:Q=F:U=0 ELSE U=1
+300 K=INKEY():CLK
+310 X=X-(K==28)+(K==29)
+320 Y=Y-(K==30)+(K==31)
+350 IF (X==A)*(Y==B) GOTO 40
+360 IF SCR(X,Y)==143 X=A:Y=B:GOTO 40
+370 LC A,B:?" "
+375 IF U==0 LC E,F:?CHR$(T)
+380 IF SCR(X,Y)==245 C=C-1
+390 IF C==0 GOTO 600
+500 GOTO 30
+600 CLS
+610 LC 10,10:?"SUCCESS!"
+620 LC 10,11:?"TIME:";TICK()/60
+630 END
