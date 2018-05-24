@@ -1,0 +1,17 @@
+[座標と点]
+横と縦の座標を指定して、点を表示する
+やめるまで続けられるので、絵もかける
+
+
+10 CLV:CLS
+20 FOR I=0 TO 999 STEP 2
+30 INPUT "YOKO?",[I]
+40 INPUT "TATE?",[I+1]
+50 INPUT "CONTENUE? YES:1 NO:2 ",C
+55 A=I
+60 IF C==1 NEXT ELSE GOTO 70
+70 CLS
+80 FOR I=0 TO A STEP 2
+90 LC [I],[I+1]:?"*"
+100 NEXT
+110 LC 0,21:?
