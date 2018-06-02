@@ -1,0 +1,41 @@
+[vscode_mod]
+
+1.Myrica MのフォントファイルをDL
+2.Material themeをインストール
+3.個人設定で、以下をコピペ
+
+
+{
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "editor.tokenColorCustomizations": {
+        "comments":{
+            "foreground":"#3f8aadb0",
+            "fontStyle": "italic",
+        },
+        "strings": "#c4c4c4",
+    },
+    "editor.fontFamily": "Consolas, Myrica M, Meyrio, Menlo, Monaco, 'Courier New', monospace",
+    "workbench.colorCustomizations": {
+        "editor.findMatchBackground":"#009acd4d",
+        "editor.findMatchHighlightBackground":"#009acd4d",
+        "editor.findRangeHighlightBackground":"#009acd4d",
+        "editor.findMatchBorder":"#009acd98",
+        "editor.findMatchHighlightBorder":"#009acd98",
+        "editor.findRangeHighlightBorder":"#009acd98",
+        "editor.background":"#221c12",
+        "editor.selectionBackground":"#8fd2ff81",
+        "editorGroup.border":"#0066ffe1",
+        "statusBar.background": "#e0fbff",
+        "statusBar.noFolderBackground": "#e0fbff",
+        "statusBar.debuggingBackground": "#e0fbff",
+        "activityBar.background": "#0066ffe1",
+        "activityBarBadge.background": "#ff5959",
+        "titleBar.activeBackground": "#e0fbff",
+        "titleBar.activeForeground": "#070e11",
+        "sideBar.background": "#10242c",
+
+    },
+    "editor.fontSize": 12,
+    "materialTheme.fixIconsRunning": false,
+    "workbench.colorTheme": "Material Theme",
+}
