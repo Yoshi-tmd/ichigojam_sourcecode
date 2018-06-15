@@ -1,0 +1,36 @@
+//2軸アナログジョイスティックでカムロボ操作する
+//
+//　Joystick    IchigoJam
+//    GND  -------  GND
+//    5V   -------  VCC(3.3V)
+//　  VRX  -------  IN(2)
+//    VRY  -------  BTN
+//    SW   -------  IN(1)
+
+1 'Joystick controller
+10 CLS
+20 X=ANA(2)-538
+30 Y=ANA(0)-508
+40 C=1-(IN(1))
+50 LC 10,10:?"X   Y   C"
+60 LC 10,12:?X;" ";Y;" ";C
+70 IF C GSB 500
+80 IF (Y>5)+(Y<-5) GOTO 200
+100 IF X<0 GOTO 140
+110 PWM2,2000-(X*5):OUT1,1
+120 PWM5,2000-(X*5):OUT6,1
+130 GOTO 300
+140 PWM2,-(X*3):OUT1,0
+150 PWM5,-(X*3):OUT6,0
+160 GOTO 300
+200 IF Y<0 GOTO 240
+210 PWM5,(Y*3):OUT6,0
+220 PWM2,2000-(Y*3):OUT1,1
+230 GOTO 300
+240 PWM2,-(Y*3):OUT1,0
+250 PWM5,2000+(Y*5):OUT6,1
+260 GOTO 300
+300 WAIT 6:GOTO 10
+500 PLAY "T3000 O3CDEFGAB O4CDEFGAB O5CDEFGAB"
+510 RTN
+
