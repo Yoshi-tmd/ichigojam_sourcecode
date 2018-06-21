@@ -19,7 +19,7 @@
 //410行　空白は6
 
 5 X=10:Y=5:S=0:CLS
-10 FOR I=1 TO 20
+10 FOR I=2 TO 20
 12 LC 2,I:?"|                 |"
 14 NEXT
 20 FOR I=2 TO 20
