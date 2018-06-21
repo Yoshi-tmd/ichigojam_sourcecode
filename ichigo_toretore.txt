@@ -18,7 +18,7 @@
 //180行　文字列はいちご
 //410行　空白は6
 
-5 X=10:Y=5:S=0:CLS
+5 CLS:X=10:Y=5:S=0
 10 FOR I=2 TO 20
 12 LC 2,I:?"|                 |"
 14 NEXT
@@ -28,22 +28,108 @@
 30 FOR I=2 TO 20
 32 LC I,20:?"-"
 34 NEXT
-35 WAIT 30
-37 CLT:LC 2,0:?"GO!GO!" 
-40 A=3+RND(17):B=3+RND(17)
+60 WAIT 30
+70 CLT:LC 2,0:?"GO!GO!" 
+80 A=3+RND(17):B=3+RND(17)
 90 LC X,Y:?" "
 100 K=INKEY()
-120 IF K==28 AND SCR(X-1,Y)<>124 X=X-1
-130 IF K==29 AND SCR(X+1,Y)<>124 X=X+1
-140 IF K==30 AND SCR(X,Y-1)<>45 Y=Y-1
-150 IF K==31 AND SCR(X,Y+1)<>45 Y=Y+1
+120 IF K==28 AND X>3 X=X-1
+130 IF K==29 AND X<19 X=X+1
+140 IF K==30 AND Y>2 Y=Y-1
+150 IF K==31 AND Y<19 Y=Y+1
 170 LC X,Y:?"ì"
 172 LC 22,10:?"ÿ:";S
 175 IF S>4 GOTO 400
 180 LC A,B:?"ÿ"
-200 IF (X==A) AND (Y==B) S=S+1:GOTO 40
+200 IF (X==A) AND (Y==B) S=S+1:GOTO 80
 300 WAIT3:GOTO 90
 400 T=TICK()
-410 LC 2,0:?"      "
-420 LC 22,12:?"GAMECLEAR"
-430 LC 22,14:?"TIME:";T/60;".";T%60/6
+405 LC 2,0:?"      "
+410 LC 22,12:?"GAMECLEAR"
+420 LC 22,14:?"TIME:";T/60;".";T%60/6
+
+# 120~150 SCRを使う方法
+    120 IF K==28 AND SCR(X-1,Y)<>124 X=X-1
+    130 IF K==29 AND SCR(X+1,Y)<>124 X=X+1
+    140 IF K==30 AND SCR(X,Y-1)<>45 Y=Y-1
+    150 IF K==31 AND SCR(X,Y+1)<>45 Y=Y+1
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+[STEPゲームづくり]
+1.キャラを表示
+    170 LC 10,5:?"ì"
+
+2.キャラを動かす
+    5 X=10:Y=5
+    100 K=INKEY()
+    120 IF K==28 X=X-1
+    130 IF K==29 X=X+1
+    140 IF K==30 Y=Y-1
+    150 IF K==31 Y=Y+1
+    170 LC X,Y:?"ì"
+
+3.ループ処理
+    300 GOTO 100
+
+4.動いているように見せる
+    90 CLS
+    300 WAIT 3:GOTO 90
+
+5.横のカベを作る
+    200 FOR I=2 TO 20
+    210 LC 2,I:?"|                 |"
+    220 NEXT
+
+6.処理を変える
+　6-1.カベ描画のコードの行番号を変える
+    　12 LC 2,I:?"|                 |"
+    　14 NEXT
+    　20 FOR I=2 TO 20
+　6-2.カベ描画のコードを消す
+    　行番号だけで入力
+　6-3.キャラの描画処理を変更
+    　90 LC X,Y:?" "
+　6-4.初期設定に画面初期化を追加
+    　5 CLS:X=10:Y=5
+
+7.上と下のカベも描画する
+    20 FOR I=2 TO 20
+    22 LC I,1:?"-"
+    24 NEXT
+    30 FOR I=2 TO 20
+    32 LC I,20:?"-"
+    34 NEXT
+
+8.移動範囲を制限する
+    120 IF K==28 AND X>3 X=X-1
+    130 IF K==29 AND X<19 X=X+1
+    140 IF K==30 AND Y>2 Y=Y-1
+    150 IF K==31 AND Y<19 Y=Y+1
+
+9.イチゴを表示する
+    80 A=3+RND(17):B=3+RND(17)
+    180 LC A,B:?"ÿ"
+
+10.イチゴを取ったら、場所を変える
+    200 IF (X==A) AND (Y==B) GOTO 80
+
+11.イチゴを5個取ったら、ゲーム終了
+    5 CLS:X=10:Y=5:S=0
+    175 IF S>4 END
+    200 IF (X==A) AND (Y==B) S=S+1:GOTO 80
+
+12.ゲーム終了したら、GAMECLEARの文字と、時間を表示する
+    70 CLT
+    175 IF S>4 GOTO 400
+    400 T=TICK()
+    410 LC 22,12:?"GAMECLEAR"
+    420 LC 22,14:?"TIME:";T/60;".";T%60/6
+
+13.ゲーム始まるまで、ちょっと時間をおいて、GOGO！を出す、そしてスタート
+    60 WAIT 30
+    70 CLT:LC 2,0:?"GO!GO!" 
+
+14.ゲーム終了したら、GOGOを消す
+    405 LC 2,0:?"      "
+
+
