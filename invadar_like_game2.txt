@@ -1,0 +1,50 @@
+//インベーダー的なゲーム2
+
+ファイルを分けるとPOKEが活用できる
+
+
+2 L=0
+4 CLS:A=3:B=7:C=10:D=0:E=0:F=-30
+6 V=1:N=25:W=0:T=0:FOR I=1TO25:R=I*2:[R]=I-1:[R+1]=I+1:NEXT:[0]=0:[1]=1:G=0:H=0
+8 P=[1]:I=1:U=V:O=0
+10 R=P-1:X=A+(R%8)*2:Y=(R/8)*2+B:K=SCR(X,Y-T):LC X,Y-T:?" ":IF K=42R=P*2:[[R]*2+1]=[R+1]:[[R+1]*2]=[R]:O=O+1:GOTO24
+12 IF V=1LC X+1,Y:?CHR$(#E0):IF X>18U=-1:W=1
+14 IF V=-1:LC X-1,Y:?CHR$(#E1):IF X<2U=1:W=1
+16 IF G=0AND RND(4)<1 G=X:H=Y+1
+18 IF G>0LC G,H:?" ":H=H+1:LC G,H:IF SCR(G,H)=#EB ?"*":GOTO48
+20 IF H>21G=0:GOTO24
+22 IF G>0?":"
+24 P=[P*2+1]:I=I+1:IF Y>19 GOTO48
+26 LC C,20:?" ";CHR$(240);" ":K=INKEY()-28:IF K=0AND C>0:C=C-1
+28 IF K=1AND C<19:C=C+1
+30 IF K=4AND D=0D=C+1:E=19:BEEP
+32 LC D,E:?" ":E=E-1:K=SCR(D,E):LC D,E:IF D=0OR K<#E0GOTO35
+33 D=0:?"*":L=L+(K-#DF)*10:LC 22,10:?"SCORE";L:BEEP99:IF K=232 F=-30
+34 GOTO38
+35 IF D>0AND E>2?"!"
+36 IF E<2D=0
+38 IF F<0F=F+1:IF F=0F=24
+40 IF F>0LC F,4:?CHR$(241);" ":F=F-1:IF F<2LC F,4:?" ":F=-30
+42 IFI< N GOTO10
+44 B=B+W:T=W:W=0:N=N-O:A=A+V:V=U:IF N>1:GOTO8
+46 GOTO4
+48 LC2,22:?"GAMEOVER":BEEP90,50
+
+
+110 POKE #700,#10,#38,#7c,#fe,#d6,#7c,#44,#82
+120 POKE #708,#10,#38,#7c,#fe,#d6,#7c,#44,#28
+130 POKE #710,#44,#38,#7c,#d6,#fe,#7c,#44,#82
+140 POKE #718,#44,#38,#7c,#d6,#fe,#7c,#44,#82
+150 POKE #720,#38,#7c,#fe,#fe,#54,#38,#28,#44
+160 POKE #728,#38,#7c,#fe,#fe,#54,#38,#28,#28
+190 POKE #740,#18,#3c,#7e,#bf,#bf,#7e,#3c,#18
+200 POKE #748,#18,#3c,#7e,#ef,#ef,#7e,#3c,#18
+210 POKE #750,#18,#3c,#7e,#fd,#fd,#7e,#3c,#18
+220 POKE #758,#18,#18,#3c,#ff,#ff,#ff,#ff,#7e
+230 poke #760,#91,#52,#34,#1f,#f8,#2c,#4a,#89
+240 poke #768,#00,#18,#18,#18,#18,#18,#18,#00
+250 poke #770,#00,#10,#8,#10,#8,#10,#8,#00
+260 poke #778,#FF,#FF,#FF,#FF,#FF,#FF,#FF,#FF
+270 poke #780,#33,#33,#33,#FF,#FF,#FF,#FF,#FF
+280 poke #788,#11,#11,#11,#33,#33,#FF,#FF,#FF
+290 poke #790,#00,#00,#00,#11,#11,#33,#33,#77
