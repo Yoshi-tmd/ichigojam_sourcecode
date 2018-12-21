@@ -1,0 +1,17 @@
+//one line shooting from kidspod
+http://kidspod.club/program/default.html?id=715
+
+
+10 CLS:CLV
+20 FOR I=0 TO 44
+30 I=I*S
+40 R=R*!!I+(RND(45)+17)*!I+L%3-1
+50 LC R/3+I%3,I/2
+60 S=!SCR()
+70 ?CHR$(237)
+80 X=X+(X<29)*BTN(29)-!!X*BTN(28)
+90 A=(INKEY()=32)*146
+100 LC X,22:?CHR$(A,A,A,28,28,31,240)
+110 L=L+!S:BEEP-I*6
+120 NEXT
+130 ?L
