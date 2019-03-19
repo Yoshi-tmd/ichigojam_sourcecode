@@ -1,0 +1,24 @@
+// AsteroidBelt
+// 上キーを押して操作する
+
+10 'AsteroidBelt
+20 CLS:CLT:Y=1
+30 @LP
+40 LC 31,0:?"~"
+50 LC 31,21:?"="
+60 IF RND(2)==0 LC31,RND(20)+1:?"*"
+70 LC 2,Y:?" "
+80 Y=Y+1-BTN(30)*2
+90 SCROLL3
+100 IF SCR(2,Y) GOTO @ED
+110 LC 2,Y:?"ñ"
+120 WAIT 3:GOTO @LP
+130 @ED
+140 ?TICK()/6:END
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+[STEO CODING]
+
+1.キャラの表示
+    20 CLS:CLT:Y=1
+    110 LC 2,Y:?"ñ"
