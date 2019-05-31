@@ -14,6 +14,18 @@
 65 IF K==32 C=1-C
 70 LC X,Y:?CHR$(C)
 
+10 CLS:X=15:Y=11
+15 C=1
+20 K=INKEY()
+30 IF K==28 X=X-1:IF X<0 X=0
+40 IF K==29 X=X+1:IF X>31 X=31
+50 IF K==30 Y=Y-1:IF Y<0 Y=0
+60 IF K==31 Y=Y+1:IF Y>22 Y=22
+65 IF K==32 C=1-C
+70 LC X,Y:?CHR$(C)
+80 GOTO 20
+
+
 //好きな文字や絵文字でおえかき
 65 IF K>=32 C=K
 

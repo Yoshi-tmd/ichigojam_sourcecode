@@ -1,4 +1,4 @@
-1 ’Shooting and Race
+1 'Shooting and Race
 5 X=10:L=15:S=0:N=0
 10 CLS
 20 FOR I=0 TO 22:IF I%2==0 LC X,I:?"|        |"
