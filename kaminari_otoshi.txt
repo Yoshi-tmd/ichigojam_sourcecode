@@ -1,0 +1,19 @@
+// ワンライン　カミナリサンダー
+http://kidspod.club/program/default.html?id=799
+
+10 CLV
+20 K=35
+30 FOR I=0 TO K
+40 I=I%K
+50 LC X,23:?CHR$(0);
+60 LC Z,I:?CHR$((#77+I%9)*!!I+12);
+70 X=(X-BTN(28)+BTN(29)+30)%30
+80 LC X,23
+90 I=I+SCR()*K
+100 ?CHR$(#ED);
+110 BEEP I-5
+120 S=S+!I
+130 Z=(Z+RND(3)+29+RND(28)*!I)%30
+140 WAIT -50
+150 NEXT
+160 ?S
