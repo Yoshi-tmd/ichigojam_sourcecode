@@ -12,17 +12,17 @@ http://kidspod.club/program/default.html?id=716
 90 IF T<0 T=RND(30)
 100 IF T>30 T=RND(30)
 110 LC A,B:?CHR$(0);
-120 LC T,U:?CHR$(#ED);
+120 LC T,U:?CHR$(237);
 130 IF N<0 IF BTN(32) M=X:N=Y
 140 IF (SCR(M,N-1)<>0) U=-1
 150 IF (SCR(M,N-2)<>0) U=-1
 160 A=M:B=N:N=N-2
 170 LC A,B-1:?CHR$(0);
 180 LC A,B:?CHR$(0);
-190 IF N<=0 N=-1 ELSE LC M,N:?CHR$(#92);
+190 IF N<=0 N=-1 ELSE LC M,N:?CHR$(146);
 200 A=X:B=Y
 210 X=X+(X<30)*BTN(29)-(X>0)*BTN(28)
 220 LC A,B:?CHR$(0);
-230 LC X,Y:?CHR$(#F0);
+230 LC X,Y:?CHR$(240);
 240 NEXT
 250 @ED:LC 10,10:?"MISS!":?:END
