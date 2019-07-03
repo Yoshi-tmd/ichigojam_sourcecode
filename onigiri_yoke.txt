@@ -1,0 +1,27 @@
+// 飛んでくる矢をよけろゲーム
+// どこかで拾ったゲームを改造した
+
+10 CLS
+20 X=15:Y=23
+30 SCROLL 2
+40 C=SCR(X,Y)
+50 LC X,Y:?"ú";
+60 LC RND(30),0:?"Y";
+70 X=X-(BTN(28)*(X>0))+(BTN(29)*(X<30))
+80 IF C==ASC("Y") LC X,Y:?"ô":END
+90 WAIT 2
+100 GOTO 30
+
+//おにぎり取るとポイント
+10 CLS
+20 X=15:Y=23:S=0
+30 SCROLL 2
+40 C=SCR(X,Y)
+50 LC X,Y:?"ú";
+60 LC RND(30),0:?"Y";
+62 IF RND(3)==0 LC RND(30),0:?"ë";
+70 X=X-(BTN(28)*(X>0))+(BTN(29)*(X<30))
+80 IF C==ASC("Y") LC X,Y:?"ô":?S:END
+82 IF C==ASC("ë") S=S+1
+90 WAIT 2
+100 GOTO 30
