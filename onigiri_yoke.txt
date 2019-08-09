@@ -9,7 +9,7 @@
 60 LC RND(30),0:?"Y";
 70 X=X-(BTN(28)*(X>0))+(BTN(29)*(X<30))
 80 IF C==ASC("Y") LC X,Y:?"ô":END
-90 WAIT 2
+90 WAIT 6
 100 GOTO 30
 
 //おにぎり取るとポイント
