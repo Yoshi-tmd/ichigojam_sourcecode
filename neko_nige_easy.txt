@@ -1,4 +1,6 @@
 //ネコから逃げろゲーム（かんたん）
+// 2020/01/28   ネコキャッチゲームに変更
+//              詳しくは /Users/tomodayoshinori/Documents/myworkspace/IchigoJam/ソースコード/_印刷用/ネコキャッチゲーム.xlsx           
 
 10 CLS:X=15:Y=15:C=1:D=1
 20 A=RND(31):B=RND(23)
@@ -28,7 +30,7 @@
 160 IF (X==E)*(Y==F) END
 
 // 2匹とったらクリアする
-10 CLS:X=15:Y=15:C=1:D=1:G=1:H=-1:S=0
+10 CLS:X=15:Y=15:C=1:D=1::CLT:G=1:H=-1:S=0
 20 A=RND(31):B=RND(23):E=RND(31):F=RND(23)
 30 LC A,B:?" "; 
 50 IF (A<0)+(A>30) C=-1*C
@@ -37,7 +39,7 @@
 72 LC E,F:?" "; 
 74 IF (E<0)+(E>30) G=-1*G
 75 IF (F<0)+(F>22) H=-1*H
-76 IF E<>99 E=E+G:F=F+H:LC E,F:?"ñ"; 
+76 IF E<>99 E=E+G:F=F+H:LC E,F:?"ì"; 
 80 LC X,Y:?" ";
 90 K=INKEY()
 100 IF K==28 IF X>0 X=X-1
@@ -45,10 +47,13 @@
 120 IF K==30 IF Y>0 Y=Y-1
 130 IF K==31 IF Y<22 Y=Y+1
 140 LC X,Y:?"ú";
+145 IF TICK()>900 LC 0,0:?"GAME OVER":END
 150 IF (X==A)*(Y==B) S=S+1:A=99
 160 IF (X==E)*(Y==F) S=S+1:E=99
-170 IF S==2 LC 11,20:?"GAME CLEAR!":END
+170 IF S==2 GOTO 300
 200 GOTO 30
+300 LC 0,0:?"GAME CLEAR"
+310 WAIT 90:GOTO 10
 
 ===================================
 // ステップ作製
