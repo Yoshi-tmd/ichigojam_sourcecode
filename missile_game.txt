@@ -1,0 +1,41 @@
+// ミサイルゲーム
+// from kidspod
+
+ミサイルを操って、右端の敵基地に当ててください。
+操作は上下キー。上下方向に加速します。
+途中の壁に当たったり、画面上下端または敵基地に当てられずに右端に行ってしまうと失敗です。
+
+レベルが上がるごとに、壁が増えます。5レベルごとに壁の数はリセットされますが、壁の切れ目の大きさが小さくなります。
+再ゲームはスペースキーです。
+
+（2019/06/06 IchigoJam BASIC 1.2.3と1.3.1で動作確認済）
+
+===============================================
+
+10 'MISSILE
+20 CLV:CLP
+30 COPY #700,#30,8
+40 A=300:B=30:L=0
+50 CLS:X=0:V=0:W=0
+60 L=L+1
+70 Y=(RND(12)+6)*A:T=RND(12)+6
+80 FOR I=24 TO 4 STEP -25/(L%6+L/6):R=RND(20)
+90 FOR J=0 TO 23:LC I,J:?CHR$((R>J OR R+5-(L/6)*2<J)*#E0);:NEXT:NEXT
+100 LC 0,0:?"MISSILE"
+110 LC 24,0:?"LEVEL ";L;
+120 LC 31,T:?CHR$(#F0);
+130 K=BTN(DOWN)-BTN(UP):IF K<>0 THEN V=K
+140 W=W+V:Y=Y+W:X=X+1
+150 IF X%B<B/2 THEN C=#81+(Y%A>A/2)*3 ELSE C=#82+(Y%A>A/2)*6
+160 M=X/B:N=Y/A
+170 S=SCR(M,N):IF S=#E0 THEN GOTO 230
+180 LC M,N:?CHR$(C);
+190 BEEP N*3+1
+200 IF M=31 AND N=T THEN GOTO 260
+210 IF N<0 OR N>23 OR M>31 THEN GOTO 230
+220 GOTO 130
+230 PLAY "AE":FOR I=0 TO 11:LC M-(M>31),N+(N<0)-(N>23):?CHR$(#F4*(I%2));:WAIT 5:NEXT
+240 LC 12,10:?"GAME OVER":CLK
+250 IF INKEY()=32 THEN GOTO 20 ELSE CONT 
+260 VIDEO 2:FOR I=0 TO 50:LC M-RND(I)/4,N-RND(I)/4+I/8:?CHR$(#F4);:BEEP I*5:WAIT 5:NEXT
+270 VIDEO 1:WAIT 120:GOTO 50
