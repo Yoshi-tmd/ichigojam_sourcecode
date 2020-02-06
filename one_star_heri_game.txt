@@ -11,7 +11,7 @@ IchigoJam 1.4用です。圧電サウンダーでいい音が出せたと思い�
 30 P=!RND(Z)
 40 Z=(Z-4)*!P+P*63:V=V*!P+P*RND(38)
 50 SCROLL 3
-60 LC 0,Y/2:J=SCR():?CHR$(#F3)
+60 LC 0,Y/2:J=SCR():?CHR$(243)
 70 LC 704:?S
 80 DRAW Z,V
 90 LC 31,RND(19):?":"
