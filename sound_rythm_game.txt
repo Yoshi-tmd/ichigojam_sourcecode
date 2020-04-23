@@ -1,0 +1,22 @@
+// 音ゲー
+// 数字のキーを使う
+
+// キーと音を増やせるかも
+
+10 CLS:CLV:CLT
+20 R=RND(15)
+40 IF R<2 LC RND(4)+1,22:?"æ"
+45 LC 0,0:?"é1234é"
+50 K=INKEY():CLK
+60 A=SCR(K-48,1)
+70 IF K==49 PLAY "C8"
+72 IF K==50 PLAY "D8"
+74 IF K==51 PLAY "E8"
+76 IF K==52 PLAY "F8"
+80 IF A==230 S=S+1:LC 15,0:?"è"
+99 WAIT 1
+100 SCROLL 0
+105 LC 10,0:?S
+108 LC 0,0:?"é1234é"
+110 LC 5,1:?"à"
+120 IF TICK()<60*20 GOTO 20
