@@ -1,0 +1,36 @@
+// ギリギリよけゲーム
+// スペースで避ける
+
+10 Y=20:C=20
+20 B=C
+30 R=60*(RND(5)+1)
+40 CLT:CLS
+50 LC 5,Y:?"💃" 
+60 LC B,20:?"█"
+70 IF C==8 ?"GAME CLEAR!":END
+80 IF TICK()<R GOTO  50
+90 IF BTN(32) IF B>8 END ELSE Y=15
+100 IF B==5 AND Y==20 LC B,20:?"💥":END
+110 IF B<0 AND Y==15 ?"CLEAR":C=C-1:Y=20:WAIT 60:GOTO 20
+120 B=B-1
+130 CLS:GOTO 50
+
+----------
+/ 1 /
+10 Y=20
+20 B=20
+30 LC 5,Y:?"💃" 
+40 LC B,20:?"█"
+----------
+/ 2 /
+120 B=B-1
+130 CLS:GOTO 30
+----------
+/ 3 /
+90 IF BTN(32) Y=15
+----------
+/ 4 /
+100 IF B==5 AND Y==20 LC B,20:?"💥":END
+----------
+/ 5 /
+90 IF BTN(32) IF B>8 END ELSE Y=15
