@@ -1,0 +1,21 @@
+// だるまさんがころんだ
+
+/* FIX version
+10 CLS
+20 X=15:Y=21:F=0
+23 A=RND(20)+5:B=5
+25 LC A,B:?"🍙"
+30 R=RND(20)
+35 T=TICK()%60
+40 IF T>R LC 12,0:?"<-> <->":F=0
+42 IF T<=R LC 12,0:?"<⚫> <⚫>":BEEP 5,3:F=1
+50 LC X,Y:?" ";
+52 K=INKEY()
+60 X=X-(K==28)+(K==29)
+70 Y=Y-(K==30)+(K==31)
+80 LC X,Y:?"🕺";
+82 IF F==1 AND K PLAY "O2C32R32C":END
+85 IF X==A AND Y==B LC 12,1:?"CLEAR":END
+90 WAIT 1
+100 GOTO 30
+
