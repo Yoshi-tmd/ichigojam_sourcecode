@@ -68,3 +68,25 @@
 20 INPUT B
 30 C=A*10/B:D=A*100/B
 40 ?A;"/";B;"=";C/10;".";C%10;D%10
+
+====================================
+
+//１からNまでの和を求める
+10 CLV:I=1
+20 INPUT N
+30 S=S+I
+40 I=I+1
+50 IF I>N ?S:END ELSE GOTO 30
+
+10 CLV
+20 INPUT N
+25 FOR I=1 TO N
+30 S=S+I
+40 NEXT
+50 ?S
+
+10 CLV
+20 INPUT N
+30 S=(N*(N+1))/2
+40 ?S
+
