@@ -1,0 +1,31 @@
+// BLOCK GAME
+// よくあるブロック崩し
+
+
+
+1 'BLOCK GAME
+10 CLS
+20 X=7:Y=11:W=14:Z=21
+30 A=1:B=1:P=0
+40 I=3:J=3
+50 LC I,J:?"Ə"
+60 I=I+3
+70 IF I<28 GOTO 50
+75 I=3:J=J+2
+76 IF J<8 GOTO 50
+80 LC X,Y:?" "
+90 LC W-1,Z:?"      "
+100 IF X<1 A=1
+110 IF X>30 A=-1
+120 IF Y<2 OR S=ASC("Ə") B=1
+130 IF (Y>19)*(W-2<X)*(X<W+2)+(S=ASC("Ə")) B=-1
+140 X=X+A:Y=Y+B
+145 S=SCR(X,Y)
+148 IF S==ASC("Ə") P=P+1
+150 K=INKEY()
+160 W=W-(K==28)*(W>0)+(K==29)*(W<30)
+170 LC X,Y:?"ǩ"
+180 LC W-1,Z:?"==="
+185 LC 0,0:?P
+190 IF Y>21 END
+200 WAIT 5:GOTO 80
